@@ -11,7 +11,6 @@ import org.springframework.stereotype.Component;
 import com.ecom.model.UserDtls;
 import com.ecom.repository.UserRepository;
 import com.ecom.service.UserService;
-import com.ecom.service.impl.UserServiceImpl;
 import com.ecom.util.AppConstant;
 
 import jakarta.servlet.ServletException;

@@ -9,9 +9,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.security.Principal;
 import java.util.List;
-import java.util.Random;
 import java.util.UUID;
-import java.util.stream.Collector;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
@@ -108,8 +106,8 @@ public class HomeController {
 		m.addAttribute("paramValue", category);
 		m.addAttribute("categories", categories);
 
-//		List<Product> products = productService.getAllActiveProducts(category);
-//		m.addAttribute("products", products);
+		// List<Product> products = productService.getAllActiveProducts(category);
+		// m.addAttribute("products", products);
 		Page<Product> page = null;
 		if (StringUtils.isEmpty(ch)) {
 			page = productService.getAllActiveProductPagination(pageNo, pageSize, category);
@@ -139,7 +137,9 @@ public class HomeController {
 	}
 
 	@PostMapping("/saveUser")
-	public String saveUser(@ModelAttribute UserDtls user, @RequestParam("img") MultipartFile file, HttpSession session)
+	public String saveUser(@ModelAttribute UserDtls user,
+			@RequestParam("img") MultipartFile file,
+			HttpSession session)
 			throws IOException {
 
 		Boolean existsEmail = userService.existsEmail(user.getEmail());
@@ -158,7 +158,7 @@ public class HomeController {
 					Path path = Paths.get(saveFile.getAbsolutePath() + File.separator + "profile_img" + File.separator
 							+ file.getOriginalFilename());
 
-//					System.out.println(path);
+					// System.out.println(path);
 					Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
 				}
 				session.setAttribute("succMsg", "Register successfully");
@@ -170,7 +170,7 @@ public class HomeController {
 		return "redirect:/register";
 	}
 
-//	Forgot Password Code 
+	// Forgot Password Code
 
 	@GetMapping("/forgot-password")
 	public String showForgotPassword() {
@@ -178,7 +178,9 @@ public class HomeController {
 	}
 
 	@PostMapping("/forgot-password")
-	public String processForgotPassword(@RequestParam String email, HttpSession session, HttpServletRequest request)
+	public String processForgotPassword(@RequestParam String email,
+			HttpSession session,
+			HttpServletRequest request)
 			throws UnsupportedEncodingException, MessagingException {
 
 		UserDtls userByEmail = userService.getUserByEmail(email);

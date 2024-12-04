@@ -90,7 +90,8 @@ public class AdminController {
 	}
 
 	@GetMapping("/category")
-	public String category(Model m, @RequestParam(name = "pageNo", defaultValue = "0") Integer pageNo,
+	public String category(Model m,
+			@RequestParam(name = "pageNo", defaultValue = "0") Integer pageNo,
 			@RequestParam(name = "pageSize", defaultValue = "10") Integer pageSize) {
 		// m.addAttribute("categorys", categoryService.getAllCategory());
 		Page<Category> page = categoryService.getAllCategorPagination(pageNo, pageSize);
@@ -108,7 +109,8 @@ public class AdminController {
 	}
 
 	@PostMapping("/saveCategory")
-	public String saveCategory(@ModelAttribute Category category, @RequestParam("file") MultipartFile file,
+	public String saveCategory(@ModelAttribute Category category,
+			@RequestParam("file") MultipartFile file,
 			HttpSession session) throws IOException {
 
 		String imageName = file != null ? file.getOriginalFilename() : "default.jpg";
@@ -161,7 +163,8 @@ public class AdminController {
 	}
 
 	@PostMapping("/updateCategory")
-	public String updateCategory(@ModelAttribute Category category, @RequestParam("file") MultipartFile file,
+	public String updateCategory(@ModelAttribute Category category,
+			@RequestParam("file") MultipartFile file,
 			HttpSession session) throws IOException {
 
 		Category oldCategory = categoryService.getCategoryById(category.getId());
@@ -230,13 +233,13 @@ public class AdminController {
 			@RequestParam(name = "pageNo", defaultValue = "0") Integer pageNo,
 			@RequestParam(name = "pageSize", defaultValue = "10") Integer pageSize) {
 
-//		List<Product> products = null;
-//		if (ch != null && ch.length() > 0) {
-//			products = productService.searchProduct(ch);
-//		} else {
-//			products = productService.getAllProducts();
-//		}
-//		m.addAttribute("products", products);
+		// List<Product> products = null;
+		// if (ch != null && ch.length() > 0) {
+		// products = productService.searchProduct(ch);
+		// } else {
+		// products = productService.getAllProducts();
+		// }
+		// m.addAttribute("products", products);
 
 		Page<Product> page = null;
 		if (ch != null && ch.length() > 0) {
@@ -299,28 +302,29 @@ public class AdminController {
 		} else {
 			users = userService.getUsers("ROLE_ADMIN");
 		}
-		m.addAttribute("userType",type);
+		m.addAttribute("userType", type);
 		m.addAttribute("users", users);
 		return "/admin/users";
 	}
 
 	@GetMapping("/updateSts")
-	public String updateUserAccountStatus(@RequestParam Boolean status, @RequestParam Integer id,@RequestParam Integer type, HttpSession session) {
+	public String updateUserAccountStatus(@RequestParam Boolean status, @RequestParam Integer id,
+			@RequestParam Integer type, HttpSession session) {
 		Boolean f = userService.updateAccountStatus(id, status);
 		if (f) {
 			session.setAttribute("succMsg", "Account Status Updated");
 		} else {
 			session.setAttribute("errorMsg", "Something wrong on server");
 		}
-		return "redirect:/admin/users?type="+type;
+		return "redirect:/admin/users?type=" + type;
 	}
 
 	@GetMapping("/orders")
 	public String getAllOrders(Model m, @RequestParam(name = "pageNo", defaultValue = "0") Integer pageNo,
 			@RequestParam(name = "pageSize", defaultValue = "10") Integer pageSize) {
-//		List<ProductOrder> allOrders = orderService.getAllOrders();
-//		m.addAttribute("orders", allOrders);
-//		m.addAttribute("srch", false);
+		// List<ProductOrder> allOrders = orderService.getAllOrders();
+		// m.addAttribute("orders", allOrders);
+		// m.addAttribute("srch", false);
 
 		Page<ProductOrder> page = orderService.getAllOrdersPagination(pageNo, pageSize);
 		m.addAttribute("orders", page.getContent());
@@ -382,9 +386,9 @@ public class AdminController {
 
 			m.addAttribute("srch", true);
 		} else {
-//			List<ProductOrder> allOrders = orderService.getAllOrders();
-//			m.addAttribute("orders", allOrders);
-//			m.addAttribute("srch", false);
+			// List<ProductOrder> allOrders = orderService.getAllOrders();
+			// m.addAttribute("orders", allOrders);
+			// m.addAttribute("srch", false);
 
 			Page<ProductOrder> page = orderService.getAllOrdersPagination(pageNo, pageSize);
 			m.addAttribute("orders", page);
@@ -422,7 +426,7 @@ public class AdminController {
 				Path path = Paths.get(saveFile.getAbsolutePath() + File.separator + "profile_img" + File.separator
 						+ file.getOriginalFilename());
 
-//				System.out.println(path);
+				// System.out.println(path);
 				Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
 			}
 			session.setAttribute("succMsg", "Register successfully");
