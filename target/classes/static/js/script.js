@@ -9,7 +9,6 @@ $(function(){
 		rules:{
 			name:{
 				required:true,
-				lettersonly:true
 			}
 			,
 			email: {
@@ -22,35 +21,26 @@ $(function(){
 				space: true,
 				numericOnly: true,
 				minlength: 10,
-				maxlength: 12
-
+				maxlength: 10
 			},
 			password: {
 				required: true,
 				space: true
-
 			},
 			confirmpassword: {
 				required: true,
-				space: true,
 				equalTo: '#pass'
 
 			},
 			address: {
 				required: true,
-				all: true
-
 			},
 
 			city: {
 				required: true,
-				space: true
-
 			},
 			state: {
 				required: true,
-
-
 			},
 			pincode: {
 				required: true,
@@ -64,57 +54,45 @@ $(function(){
 		},
 		messages:{
 			name:{
-				required:'name required',
-				lettersonly:'invalid name'
+				required:'Please enter your name',
 			},
 			email: {
-				required: 'email name must be required',
-				space: 'space not allowed',
+				required: 'Email required',
+				space: 'Space not allowed',
 				email: 'Invalid email'
 			},
 			mobileNumber: {
-				required: 'mob no must be required',
-				space: 'space not allowed',
-				numericOnly: 'invalid mob no',
-				minlength: 'min 10 digit',
-				maxlength: 'max 12 digit'
+				required: 'Please enter your mobile number',
+				space: 'Space not allowed',
+				numericOnly: 'Invalid mobnum',
+				minlength: 'Mobnum must be 10 digit'
 			},
 
 			password: {
-				required: 'password must be required',
-				space: 'space not allowed'
-
+				required: 'Please enter your password',
 			},
 			confirmpassword: {
-				required: 'confirm password must be required',
-				space: 'space not allowed',
-				equalTo: 'password mismatch'
-
+				required: 'Please enter your confirm password',
+				equalTo: 'Password mismatch'
 			},
 			address: {
-				required: 'address must be required',
-				all: 'invalid'
-
+				required: 'Address required',
 			},
 
 			city: {
-				required: 'city must be required',
-				space: 'space not allowed'
-
+				required: 'City required',
 			},
 			state: {
-				required: 'state must be required',
-				space: 'space not allowed'
-
+				required: 'State required',
 			},
 			pincode: {
-				required: 'pincode must be required',
-				space: 'space not allowed',
-				numericOnly: 'invalid pincode'
+				required: 'Pincode required',
+				space: 'Space not allowed',
+				numericOnly: 'Invalid pincode'
 
 			},
 			img: {
-				required: 'image required',
+				required: 'Image required',
 			}
 		}
 	})
@@ -233,27 +211,19 @@ $resetPassword.validate({
 		rules:{
 			password: {
 				required: true,
-				space: true
-
 			},
 			confirmPassword: {
 				required: true,
-				space: true,
 				equalTo: '#pass'
-
 			}
 		},
 		messages:{
-		   password: {
-				required: 'password must be required',
-				space: 'space not allowed'
-
+			password: {
+				required: 'Please enter your password',
 			},
 			confirmpassword: {
-				required: 'confirm password must be required',
-				space: 'space not allowed',
-				equalTo: 'password mismatch'
-
+				required: 'Please enter your confirm password',
+				equalTo: 'Password mismatch'
 			}
 		}	
 })
