@@ -11,3 +11,93 @@
 .error {
 	color: red;
 }
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Header styles */
+.navbar {
+  background-color: #aa261b; /* Màu nền đỏ */
+}
+
+.navbar-brand {
+  font-size: 1.8rem;
+  font-weight: 700; /* Đậm hơn */
+  color: white !important; /* Chữ trắng */
+}
+
+.nav-link {
+  font-size: 1.2rem;
+  font-weight: 500; /* Đậm vừa phải */
+  color: white !important;
+}
+
+.nav-link:hover {
+  color: #ffc107 !important; /* Màu vàng khi hover */
+}
+
+/* Footer styles */
+.footer {
+  background-color: #aa261b;
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.footer p {
+  font-size: 1rem;
+  margin: 5px 0;
+}
+
+.footer p.normal {
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+/*category*/
+.card {
+    border: none; /* Loại bỏ viền */
+    border-radius: 15px; /* Bo góc mềm mại */
+    overflow: hidden;
+}
+
+.card-img-top {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.card-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+
+/* Toàn bộ card hover */
+.hover-effect:hover {
+  transform: scale(1.05);
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Hiệu ứng riêng cho ảnh */
+.category-img:hover {
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+  border-radius: 10px;
+}
+
+/* Hiệu ứng riêng cho nút */
+.category-btn:hover {
+  background-color: #ff4d4d; /* Đổi màu nút */
+  border-color: #ff4d4d;
+  transform: translateY(-5px);
+  transition: all 0.2s ease;
+}
+.red-btn {
+  background-color: #aa261b !important;
+  color: white !important;
+}
+
+.description {
+  white-space: pre-line;
+}

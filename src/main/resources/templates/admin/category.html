@@ -3,16 +3,15 @@
 	th:replace="~{base::layout(~{::section})}">
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Category</title>
 </head>
 <body>
 	<section>
 		<div class="container-fluid p-5 mt-5">
 			<div class="row">
 				<div class="col-md-3">
-					<div class="card card-sh">
-						<div class="card-header text-center ">
-							<p class="fs-4">Add Category</p>
+					<div class="card card-sh"> <div class="card-header text-center ">
+							<p class="fs-4 fw-bold">Add Category</p>
 							<th:block th:if="${session.succMsg}">
 								<p class="text-success fw-bold">[[${session.succMsg}]]</p>
 								<th:block th:text="${@commnServiceImpl.removeSessionMessage()}"></th:block>
@@ -54,15 +53,14 @@
 									<label>Upload Image</label> <input type="file" name="file"
 										class="form-control">
 								</div>
-								<button class="btn btn-primary col-md-12 mt-2">Save</button>
+								<button class="btn custom-btn col-md-12 mt-2">Save</button>
 							</form>
 						</div>
 					</div>
 				</div>
 
 				<div class="col-md-8">
-					<div class="card card-sh">
-						<div class="card-header text-center fs-4">Category Details</div>
+					<div class="card card-sh"> <div class="card-header text-center fs-4">Category Details</div>
 						<div class="card-body">
 							<table class="table">
 								<thead>
@@ -104,7 +102,7 @@
 												th:classappend="${isFirst} ? 'disabled':''"><a
 												class="page-link"
 												th:href="@{'/admin/category?pageNo='+${pageNo-1}}"
-												aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+												aria-label="Previous"> <span aria-hidden="true">«</span>
 											</a></li>
 
 											<li th:each="i:${#numbers.sequence(1,totalPages)}"
@@ -117,7 +115,7 @@
 												th:classappend="${isLast} ? 'disabled':''"><a
 												class="page-link"
 												th:href="@{'/admin/category?pageNo='+${pageNo+1}}"
-												aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+												aria-label="Next"> <span aria-hidden="true">»</span>
 											</a></li>
 										</ul>
 									</nav>
@@ -131,6 +129,12 @@
 
 			</div>
 		</div>
+		<style>
+			.custom-btn {
+				background-color: #aa261b;
+				color: white;
+			}
+		</style>
 	</section>
 </body>
 </html>

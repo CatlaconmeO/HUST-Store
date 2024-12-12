@@ -11,8 +11,8 @@
 
 			<div class="card card-sh">
 				<div class="card-header text-center">
-					<p class="fs-4" th:if="${userType==1}">Users</p>
-					<p class="fs-4" th:if="${userType==2}">Admin</p>
+					<p class="fs-4 fw-bold" th:if="${userType==1}">Users</p>
+					<p class="fs-4 fw-bold" th:if="${userType==2}">Admin</p>
 					<th:block th:if="${session.succMsg}">
 						<p class="text-success fw-bold">[[${session.succMsg}]]</p>
 						<th:block th:text="${@commnServiceImpl.removeSessionMessage()}"></th:block>

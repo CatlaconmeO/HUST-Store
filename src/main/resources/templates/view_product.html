@@ -6,6 +6,11 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<style>
+		.description {
+ 		 white-space: pre-line;
+}
+	</style>
 	<section>
 		<div class="container card-sh"
 			style="margin-top: 70px; margin-bottom: 100px">
@@ -31,7 +36,8 @@
 
 						<p class="fs-3">[[${product.title}]]</p>
 						<p>
-							<span class="fw-bold">Description : </span><br>[[${product.description}]]
+							<span class="fw-bold">Description : </span>
+							<span class="description">[[${product.description}]]</span>
 						</p>
 						<p>
 							<span class="fw-bold"> Product Details: </span> <br> Status
@@ -49,8 +55,8 @@
 							Days Replacement & Return
 						</p>
 						<p class="fs-5 fw-bold">
-							Price :&nbsp; &nbsp; &nbsp; &nbsp;<i class="fas fa-rupee-sign"></i>
-							[[${product.discountPrice}]] <span
+							Price: &nbsp; &nbsp; &nbsp; &nbsp;
+							[[${product.discountPrice}]]<i> ₫</i> <span
 								class="fs-6 text-decoration-line-through text-secondary">[[${product.price}]]</span>
 							<span class="fs-6  text-success">[[${product.discount}]]%
 								off</span>

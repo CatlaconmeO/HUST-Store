@@ -15,8 +15,8 @@
 				</div>
 				<div class="col-md-6 mt-3 p-5">
 					<div class="card shadow p-3 mb-5 bg-body-tertiary rounded">
-						<div class="card-header">
-							<p class="fs-4 text-center">Login</p>
+						<div class="card-header" >
+							<p class="fs-5 text-center fw-bold" >Login</p>
 							<div th:if="${param.error}"
 								class="alert alert-danger text-center">
 
@@ -28,9 +28,45 @@
 
 
 							</div>
-
-							<div th:if="${param.logout}" class="alert alert-success">
-								Logout Sucessfully</div>
+	
+							<div th:if="${param.logout}" class="alert alert-success fade-out">
+								Logout Successfully
+							</div>
+							
+							<style>
+							/* Định vị phần tử ở góc phải dưới */
+							.alert {
+								position: fixed;
+								bottom: 40px; /* Khoảng cách so với đáy màn hình */
+								right: 40px; /* Khoảng cách so với cạnh phải */
+								z-index: 9999; /* Đảm bảo nó nổi trên các phần tử khác */
+								padding: 15px 60px;
+								border-radius: 5px;
+								box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+								font-size: 16px;
+							}
+							
+							/* Hiệu ứng mờ dần (fade-out) */
+							.fade-out {
+								animation: fadeOut 1.5s forwards;
+							}
+							
+							/* Định nghĩa animation */
+							@keyframes fadeOut {
+								0% {
+									opacity: 1;
+								}
+								90% {
+									opacity: 1; /* Đợi đến 90% thời gian mới bắt đầu mờ */
+								}
+								100% {
+									opacity: 0;
+									display: none; /* Ẩn hẳn sau khi hết animation */
+								}
+							}
+							
+							</style>
+							
 						</div>
 						<div class="card-body">
 							<form action="/login" method="post">
@@ -44,13 +80,15 @@
 										class="form-control" name="password" type="password">
 								</div>
 								<button type="submit"
-									class="btn bg-primary text-white col-md-12">Login</button>
+								class="btn text-white col-md-12" 
+								style="background-color: #aa261b; ">Login</button>
+
 							</form>
 						</div>
 
 						<div class="card-footer text-center">
 							<a href="/forgot-password" class="text-decoration-none">Forgot Password</a><br>
-							Don't have an account ? <a href="#" class="text-decoration-none">Create
+							Don't have an account ? <a href="http://localhost:8080/register" class="text-decoration-none">Create
 								one </a>
 						</div>
 					</div>

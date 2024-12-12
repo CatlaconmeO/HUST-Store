@@ -1,100 +1,214 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-	th:replace="~{base::layout(~{::section})}">
+th:replace="~{base::layout(~{::section})}">
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+    <meta charset="ISO-8859-1">
+    <title>Admin Dashboard</title>
+
+    <!-- Link Font Awesome (icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 </head>
+
 <body>
-	<section>
-		<div class="container p-5">
-			<p class="text-center fs-3 mt-4">Admin Dashboard</p>
-			<div class="row p-5">
-				<div class="col-md-4 mt-2">
-					<a href="/admin/loadAddProduct" class="text-decoration-none">
-						<div class="card card-sh">
-							<div class="card-body text-center text-primary">
-								<i class="fa-solid fa-square-plus fa-3x"></i>
-								<h4>Add Product</h4>
-							</div>
-						</div>
-					</a>
-				</div>
+    <div class="my-background"></div>
+    <!-- Main Section -->
+    <section>
+        <div class="container">
+            <p style="text-align: center; font-size: 1.8rem; font-weight: bold; margin-bottom: 20px; margin-top: 20px; color: #ffffff;">Admin Dashboard</p>
 
+            <div class="row">
 
-				<div class="col-md-4 mt-2">
-					<a href="/admin/category" class="text-decoration-none">
-						<div class="card card-sh">
-							<div class="card-body text-center text-warning">
-								<i class="fa-solid fa-list fa-3x"></i>
-								<h4>Add Category</h4>
-							</div>
-						</div>
-					</a>
-				</div>
+                <div class="card">
+                    <a href="/admin/loadAddProduct">
+                        <i class="fas fa-square-plus"></i>
+                        <h4>Add Product</h4>
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="/admin/category">
+                        <i class="fas fa-list"></i>
+                        <h4>Add Category</h4>
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="/admin/products">
+                        <i class="fas fa-table-list"></i>
+                        <h4>View Product</h4>
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="/admin/orders">
+                        <i class="fas fa-box-open"></i>
+                        <h4>Orders</h4>
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="/admin/users?type=1">
+                        <i class="fas fa-user-circle"></i>
+                        <h4>Users</h4>
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="/admin/add-admin">
+                        <i class="fas fa-user-plus"></i>
+                        <h4>Add Admin</h4>
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="/admin/users?type=2">
+                        <i class="fas fa-user-tie"></i>
+                        <h4>Admins</h4>
+                    </a>
+                </div>
 
+            </div>
+        </div>
 
-				<div class="col-md-4 mt-2">
-					<a href="/admin/products" class="text-decoration-none">
-						<div class="card card-sh">
-							<div class="card-body text-center text-success">
-								<i class="fa-solid fa-table-list fa-3x"></i>
-								<h4>View Product</h4>
-							</div>
-						</div>
-					</a>
-				</div>
+        <style>
+            body {
+                margin: 0;
+                font-family: Arial, sans-serif;
+                
+                display: flex;
+                flex-direction: column;
+                min-height: 100vh;
+            }
+        
+            section {
+                flex: 1; /* Đẩy footer xuống đáy */
+            }
+        
+            .container {
+                width: 400px; /* Giảm chiều rộng bảng dashboard */
+                margin: 125px 0 0 80px; /* Căn lề trái và tạo khoảng cách trên */
+                padding: 20px;
+                background: #aa261b;
+                border-radius: 8px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+        
+            .row {
+                display: flex;
+                flex-direction: column; /* Căn các mục theo chiều dọc */
+                gap: 12px; /* Khoảng cách giữa các mục */
+            }
+        
+            .card {
+                width: 100%; /* Đầy chiều rộng container */
+                padding: 10px; /* Giảm padding */
+                display: flex; /* Sử dụng Flexbox */
+                align-items: left; /* Căn giữa theo chiều dọc */
+                background: #fff;
+                border-radius: 8px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                transition: transform 0.3s, box-shadow 0.3s;
+            }
+        
+            .card:hover {
+                transform: scale(1.05);
+                box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+            }
+        
+            .card i {
+                font-size: 1.5rem; /* Thu nhỏ icon xuống còn 2/3 */
+                color: #ec3939;
+                margin-right: 10px; /* Khoảng cách giữa icon và chữ */
+            }
+        
+            .card h4 {
+                margin: 0; /* Loại bỏ khoảng cách thừa */
+                font-size: 1rem; /* Thu nhỏ font chữ */
+                color: #333;
+                text-align: left; /* Căn lề trái chữ */
+            }
+        
+            a {
+                text-decoration: none;
+                color: inherit;
+                display: flex; /* Để thẻ <a> giữ Flexbox */
+                align-items: center; /* Căn giữa theo chiều dọc */
+            }
+        
+            footer {
+                background-color: #b71c1c;
+                color: white;
+                padding: 10px;
+                text-align: center;
+                margin-top: 20px;
+            }
+        </style>
+        
+        
+                        <!-- HTML: Thêm phần ảnh và tên ở bố cục lưới -->
+            <div class="profile-grid">
+                <div class="profile">
+                    
+                    <a href="https://www.facebook.com/cahoilamhahaha.hiaz/" class="fw-bold" style="margin: 20px 0 0 30px;">
+                        <img src="\img\AdminAvt\lam.jpg" alt="Profile 1">
+                    </a>
+                    
+                </div>
+                <div class="profile">
+                    
+                    <a href="https://www.facebook.com/Cheems74" class="fw-bold" style="margin: 20px 0 0 30px;"><img src="\img\category_img\book.jpg" alt="Profile 2"></a>
+                </div>
+                <div class="profile">
+                    
+                    <a href="https://www.facebook.com/profile.php?id=100053233786812" class="fw-bold" style="margin: 20px 0 0 30px;"><img src="\img\AdminAvt\thai.jpg" alt="Profile 3"></a>
+                </div>
+                <div class="profile">
+                    
+                    <a href="https://www.facebook.com/profile.php?id=100038843866202" class="fw-bold" style="margin: 20px 0 0 30px;"><img src="\img\AdminAvt\duclam.jpg" alt="Profile 4"></a>
+                </div>  
+            </div>
 
+            <style>
+                /* Profile grid layout */
+                .profile-grid {
+                    display: grid;
+                    grid-template-columns: repeat(2, 1fr); /* Lưới 2 cột */
+                    gap: 45px; /* Khoảng cách giữa các ô */
+                    margin: -525px 10px 50px 800px; /* Căn giữa lưới trên trang */
+                    width: 300px; /* Độ rộng của lưới */
+                    padding: 10px;
+                }
 
-				<div class="col-md-4 mt-4">
-					<a href="/admin/orders" class="text-decoration-none">
-						<div class="card card-sh">
-							<div class="card-body text-center text-warning">
-								<i class="fa-solid fa-box-open fa-3x"></i>
-								<h4>Orders</h4>
-							</div>
-						</div>
-					</a>
-				</div>
+                .profile {
+                    text-align: center;
+                }
 
+                .profile img {
+                    width: 210px; /* Kích thước ảnh */
+                    height: 210px;
+                    border-radius: 50%; /* Làm tròn ảnh */
+                    object-fit: cover; /* Đảm bảo ảnh không méo */
+                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+                    transition: transform 0.3s ease-in-out; /* Hiệu ứng mượt khi hover */
+                }
+                .profile img:hover {
+                transform: scale(1.1) translateY(-10px); /* Nảy lên khi hover */
+    }
+                .profile p {
+                    margin-top: 10px;
+                    font-size: 14px;
+                    color: #333;
+                    font-weight: bold;
+                }
+                .my-background {
+  background-image: url('/img/hustbanner.png'); /* Đường dẫn không cần Thymeleaf */
+  background-size: cover;
+  height: 500px;
+  width: 100%;
+}
+            </style>
 
-				<div class="col-md-4 mt-4">
-					<a href="/admin/users?type=1" class="text-decoration-none">
-						<div class="card card-sh">
-							<div class="card-body text-center text-primary">
-								<i class="fa-solid fa-circle-user fa-3x"></i>
-								<h4>Users</h4>
-							</div>
-						</div>
-					</a>
-				</div>
+    </section>
 
-
-				<div class="col-md-4 mt-4">
-					<a href="/admin/add-admin" class="text-decoration-none">
-						<div class="card card-sh">
-							<div class="card-body text-center text-primary">
-								<i class="fa-solid fa-user-plus fa-3x"></i>
-								<h4>Add Admin</h4>
-							</div>
-						</div>
-					</a>
-				</div>
-
-				<div class="col-md-4 mt-4">
-					<a href="/admin/users?type=2" class="text-decoration-none">
-						<div class="card card-sh">
-							<div class="card-body text-center text-primary">
-								<i class="fa-solid fa-circle-user fa-3x"></i>
-								<h4>Admin</h4>
-							</div>
-						</div>
-					</a>
-				</div>
-
-
-			</div>
-		</div>
-	</section>
+    <!-- Footer -->
+    <footer style="background-color: #b71c1c; color: white; padding: 10px; text-align: center; margin-top: 20px;">
+        <p style="margin: 0;">© Bản quyền thuộc về Đại học Bách Khoa Hà Nội</p>
+        <p style="margin: 0;">Địa chỉ: Số 1 Đại Cồ Việt, Hai Bà Trưng, Hà Nội</p>
+    </footer>
 </body>
 </html>
