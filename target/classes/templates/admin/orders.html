@@ -6,13 +6,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<section>
+	<section style="background-color: #FAF3E0;">
 		<div class="container-fluid mt-5 p-1">
 			<div class="row">
 				<p class="text-center fs-3 mt-2">All Orders</p>
 				<hr>
-				<a href="/admin/" class="text-decoration-none"><i
-					class="fa-solid fa-arrow-left"></i> Back</a>
+				<a href="/admin/" class="text-decoration-none" style="color: #aa261b;"><i
+					class="fa-solid fa-arrow-left" style="color: #aa261b;" ></i > Back</a>
 				<th:block th:if="${session.succMsg}">
 					<p class="text-success fw-bold text-center">[[${session.succMsg}]]</p>
 					<th:block th:text="${@commnServiceImpl.removeSessionMessage()}"></th:block>
@@ -31,7 +31,7 @@
 									placeholder="Enter order id">
 							</div>
 							<div class="col">
-								<button class="btn btn-primary col">Search</button>
+								<button class="btn btn-primary col" style="background-color: #aa261b;">Search</button>
 							</div>
 						</div>
 					</form>
