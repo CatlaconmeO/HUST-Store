@@ -1,14 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-	th:replace="~{base::layout(~{::section})}">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base :: layout(pageTitle='Add Admin', content=~{::section})}">
+
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+	<meta charset="ISO-8859-1">
 </head>
+
 <body>
-
-	<section>
-
+	<section style="background-color: #FAF3E0;">
 		<div class="container mt-5 p-5">
 			<div class="row">
 
@@ -27,74 +25,68 @@
 							</th:block>
 						</div>
 						<div class="card-body">
-							<form action="/admin/save-admin" enctype="multipart/form-data"
-								method="post">
+							<form action="/admin/save-admin" enctype="multipart/form-data" method="post">
 								<div class="row">
 									<div class="col">
-										<label class="form-label">Full Name</label> <input required
-											class="form-control" name="name" type="text">
+										<label class="form-label">Full Name</label> <input required class="form-control"
+											name="name" type="text">
 									</div>
 
 									<div class="col">
-										<label class="form-label">Mobile Number</label> <input
-											required class="form-control" name="mobileNumber"
-											type="number">
+										<label class="form-label">Mobile Number</label> <input required
+											class="form-control" name="mobileNumber" type="number">
 									</div>
 
 								</div>
 
 								<div class="mb-3">
-									<label class="form-label">Email</label> <input required
-										class="form-control" name="email" type="email">
-								</div>
-
-
-								<div class="row">
-									<div class="col">
-										<label class="form-label">Address</label> <input required
-											class="form-control" name="address" type="text">
-									</div>
-
-									<div class="col">
-										<label class="form-label">City</label> <input required
-											class="form-control" name="city" type="text">
-									</div>
-
+									<label class="form-label">Email</label> <input required class="form-control"
+										name="email" type="email">
 								</div>
 
 								<div class="row">
 									<div class="col">
-										<label class="form-label">State</label> <input required
-											class="form-control" name="state" type="text">
+										<label class="form-label">Address</label> <input required class="form-control"
+											name="address" type="text">
 									</div>
 
 									<div class="col">
-										<label class="form-label">Pincode</label> <input required
-											class="form-control" name="pincode" type="number">
+										<label class="form-label">City</label> <input required class="form-control"
+											name="city" type="text">
 									</div>
 
 								</div>
 
 								<div class="row">
 									<div class="col">
-										<label class="form-label">Password</label> <input required
-											class="form-control" name="password" type="password">
+										<label class="form-label">State</label> <input required class="form-control"
+											name="state" type="text">
+									</div>
+
+									<div class="col">
+										<label class="form-label">Pincode</label> <input required class="form-control"
+											name="pincode" type="number">
+									</div>
+
+								</div>
+
+								<div class="row">
+									<div class="col">
+										<label class="form-label">Password</label> <input required class="form-control"
+											name="password" type="password">
 									</div>
 									<div class="col">
-										<label class="form-label">Confirm Password</label> <input
-											required class="form-control" name="cpassword"
-											type="password">
+										<label class="form-label">Confirm Password</label> <input required
+											class="form-control" name="cpassword" type="password">
 									</div>
 								</div>
 								<div class="mb-3">
-									<label class="form-label">Profile Image</label> <input
-										class="form-control" name="img" type="file">
+									<label class="form-label">Profile Image</label> <input class="form-control"
+										name="img" type="file">
 								</div>
-								<button type="submit"
-									class="btn custom-btn text-white col-md-12">Register</button>
+								<button type="submit" class="btn custom-btn text-white col-md-12">Register</button>
 							</form>
 						</div>
-
 
 					</div>
 				</div>
@@ -105,7 +97,12 @@
 				background-color: #aa261b;
 				color: white;
 			}
+
+			.container {
+				margin: 100px 0 0 140px;
+			}
 		</style>
 	</section>
 </body>
+
 </html>

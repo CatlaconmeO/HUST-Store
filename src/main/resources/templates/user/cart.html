@@ -1,71 +1,111 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-	th:replace="~{base::layout(~{::section})}">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base :: layout(pageTitle='My Cart', content=~{::section})}">
+
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+  <meta charset="UTF-8">
+  <title>My Cart</title>
 </head>
+
 <body>
-	<section>
-		<div class="container-fluid mt-5 p-5">
+  <section>
+	<style>
+		.cus-container {
+			margin: 90px 200px 400px 200px;
+		}
+	</style>
+    <div class="cus-container">
+      <div class="card shadow">
+        <div class="card-header text-center">
+          <h2 class="fs-4 fw-bold">My Cart</h2>
+          <th:block th:if="${session.succMsg}">
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+              [[${session.succMsg}]]
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <th:block th:text="${@commnServiceImpl.removeSessionMessage()}"></th:block>
+          </th:block>
 
-			<div class="card card-sh">
-				<div class="card-header text-center">
-					<p class="fs-4">Cart Page</p>
-					<th:block th:if="${session.succMsg}">
-						<p class="text-success fw-bold">[[${session.succMsg}]]</p>
-						<th:block th:text="${@commnServiceImpl.removeSessionMessage()}"></th:block>
-					</th:block>
+          <th:block th:if="${session.errorMsg}">
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              [[${session.errorMsg}]]
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <th:block th:text="${@commnServiceImpl.removeSessionMessage()}"></th:block>
+          </th:block>
+        </div>
+        <div class="card-body">
+          <th:block th:if="${carts == null or carts.empty}">
+            <div class="text-center">
+              <h4>Giỏ hàng của bạn đang trống.</h4>
+              <a th:href="@{/}" class="btn btn-primary mt-3">Mua sắm ngay</a>
+            </div>
+          </th:block>
+          <th:block th:unless="${carts == null or carts.empty}">
+            <div class="table-responsive">
+              <table class="table table-striped table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Product</th>
+                    <th scope="col">Price</th>
+                    <th scope="col" class="text-center">Quantity</th>
+                    <th scope="col">Total</th>
+                    <th scope="col">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr th:each="cart,c:${carts}">
+                    <th scope="row">[[${c.count}]]</th>
+                    <td>
+                      <img th:src="@{'/img/product_img/'+${cart.product.image}}" width="70px" height="70px"
+                        alt="Product Image">
+                    </td>
+                    <td>[[${cart.product.title}]]</td>
+                    <td>[[${#numbers.formatDecimal(cart.product.discountPrice, 0, 'COMMA', 0, 'POINT')}]]₫</td>
+                    <td class="text-center">
+                      <div class="input-group">
+                        <a class="btn btn-outline-secondary btn-sm"
+                          th:href="@{'/user/cartQuantityUpdate?sy=de&cid='+${cart.id}}">
+                          <i class="fa-solid fa-minus"></i>
+                        </a>
+                        <input type="text" class="form-control form-control-sm text-center" style="width: 50px;"
+                          th:value="${cart.quantity}" readonly>
+                        <a class="btn btn-outline-secondary btn-sm"
+                          th:href="@{'/user/cartQuantityUpdate?sy=in&cid='+${cart.id}}">
+                          <i class="fa-solid fa-plus"></i>
+                        </a>
+                      </div>
+                    </td>
+                    <td>[[${#numbers.formatDecimal(cart.totalPrice, 0, 'COMMA', 0, 'POINT')}]]₫</td>
+                    <td>
+                      <a th:href="@{'/user/removeCartItem/' + ${cart.id}}" class="btn btn-danger btn-sm"
+                        onclick="return confirm('Bạn có chắc chắn muốn xóa sản phẩm này khỏi giỏ hàng?')">
+                        <i class="fa-solid fa-trash-can"></i>
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <td colspan="5" class="text-end fw-bold">Total Price:</td>
+                    <td colspan="2" class="fw-bold">
+                      [[${#numbers.formatDecimal(totalOrderPrice, 0, 'COMMA', 0, 'POINT')}]]₫</td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
 
-					<th:block th:if="${session.errorMsg}">
-						<p class="text-danger fw-bold">[[${session.errorMsg}]]</p>
-						<th:block th:text="${@commnServiceImpl.removeSessionMessage()}"></th:block>
-					</th:block>
-				</div>
-				<div class="card-body">
-					<table class="table">
-						<thead>
-							<tr>
-								<th scope="col">Sl No</th>
-								<th scope="col">Image</th>
-								<th scope="col">Product Name</th>
-								<th scope="col">Price</th>
-								<th scope="col" class="text-center">Quantity</th>
-								<th scope="col">Total Price</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr th:each="cart,c:${carts}">
-								<th scope="row">[[${c.count}]]</th>
-								<td><img
-									th:src="@{'/img/product_img/'+${cart.product.image}}"
-									width="70px" height="70px"></td>
-								<td>[[${cart.product.title}]]</td>
-								<td>[[${cart.product.discountPrice}]]</td>
-								<td class="text-center"><a
-									th:href="@{'/user/cartQuantityUpdate?sy=de&cid='+${cart.id}}">
-										<i class="fa-solid fa-minus"></i>
-								</a> [ [[${cart.quantity}]] ] <a
-									th:href="@{'/user/cartQuantityUpdate?sy=in&cid='+${cart.id}}">
-										<i class="fa-solid fa-plus"></i>
-								</a></td>
-								<td>[[${cart.totalPrice}]]</td>
-							</tr>
-							<tr>
-								<td colspan="4"></td>
-								<td class="fw-bold">Total Price</td>
-								<td class="fw-bold">&#8377; [[${totalOrderPrice}]]</td>
-							</tr>
-
-						</tbody>
-					</table>
-					<div class="text-center">
-						<a href="/user/orders" class="btn btn-warning"> Proceed Payment</a>
-					</div>
-				</div>
-			</div>
-		</div>
-
-	</section>
+            <div class="d-flex justify-content-between mt-3">
+              <a th:href="@{/}" class="btn btn-secondary"><i class="fa-solid fa-arrow-left"></i> Continue Shopping</a>
+              <a th:href="@{'/user/orders'}" class="btn btn-warning">Process Payment <i
+                  class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </th:block>
+        </div>
+      </div>
+    </div>
+  </section>
 </body>
+
 </html>

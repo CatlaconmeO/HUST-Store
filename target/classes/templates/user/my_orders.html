@@ -1,15 +1,13 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-	th:replace="~{base::layout(~{::section})}">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base :: layout(pageTitle='All Orders', content=~{::section})}">
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
 </head>
 <body>
-	<section>
+	<section style="background-color: #FAF3E0;">
 		<div class="container mt-5 p-5">
 			<div class="row">
-				<p class="text-center fs-3">My Orders</p>
+				<p class="text-center fs-3 fw-bold">My Orders</p>
 				<th:block th:if="${session.succMsg}">
 					<p class="text-success fw-bold text-center">[[${session.succMsg}]]</p>
 					<th:block th:text="${@commnServiceImpl.removeSessionMessage()}"></th:block>
@@ -37,8 +35,8 @@
 								<th scope="row">[[${o.orderId}]]</th>
 								<td>[[${o.orderDate}]]</td>
 								<td>[[${o.product.title}]]</td>
-								<td>Quantity : [[${o.quantity}]] <br>Price :
-									[[${o.price}]] <br>Total Price :[[${o.quantity *
+								<td>Quantity: [[${o.quantity}]] <br>Price:
+									[[${o.price}]] <br>Total Price: [[${o.quantity *
 									o.price}]]
 								</td>
 								<td>[[${o.status}]]</td>

@@ -148,9 +148,9 @@ public class AdminController {
 		Boolean deleteCategory = categoryService.deleteCategory(id);
 
 		if (deleteCategory) {
-			session.setAttribute("succMsg", "category delete success");
+			session.setAttribute("succMsg", "Category deleted");
 		} else {
-			session.setAttribute("errorMsg", "something wrong on server");
+			session.setAttribute("errorMsg", "Something went wrong");
 		}
 
 		return "redirect:/admin/category";
@@ -191,9 +191,9 @@ public class AdminController {
 				Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
 			}
 
-			session.setAttribute("succMsg", "Category update success");
+			session.setAttribute("succMsg", "Category updated");
 		} else {
-			session.setAttribute("errorMsg", "something wrong on server");
+			session.setAttribute("errorMsg", "Something went wrong");
 		}
 
 		return "redirect:/admin/loadEditCategory/" + category.getId();
@@ -206,8 +206,9 @@ public class AdminController {
 		String imageName = image.isEmpty() ? "default.jpg" : image.getOriginalFilename();
 
 		product.setImage(imageName);
-		product.setDiscount(0);
-		product.setDiscountPrice(product.getPrice());
+		product.setDiscount(product.getDiscount() == 0 ? 0 : product.getDiscount());
+		double discountPrice = product.getPrice() - (product.getPrice() * product.getDiscount() / 100);
+		product.setDiscountPrice(discountPrice);
 		Product saveProduct = productService.saveProduct(product);
 
 		if (!ObjectUtils.isEmpty(saveProduct)) {
@@ -220,9 +221,9 @@ public class AdminController {
 			// System.out.println(path);
 			Files.copy(image.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
 
-			session.setAttribute("succMsg", "Product Saved Success");
+			session.setAttribute("succMsg", "Product Saved");
 		} else {
-			session.setAttribute("errorMsg", "something wrong on server");
+			session.setAttribute("errorMsg", "Something went wrong");
 		}
 
 		return "redirect:/admin/loadAddProduct";
@@ -232,14 +233,6 @@ public class AdminController {
 	public String loadViewProduct(Model m, @RequestParam(defaultValue = "") String ch,
 			@RequestParam(name = "pageNo", defaultValue = "0") Integer pageNo,
 			@RequestParam(name = "pageSize", defaultValue = "10") Integer pageSize) {
-
-		// List<Product> products = null;
-		// if (ch != null && ch.length() > 0) {
-		// products = productService.searchProduct(ch);
-		// } else {
-		// products = productService.getAllProducts();
-		// }
-		// m.addAttribute("products", products);
 
 		Page<Product> page = null;
 		if (ch != null && ch.length() > 0) {
@@ -263,9 +256,9 @@ public class AdminController {
 	public String deleteProduct(@PathVariable int id, HttpSession session) {
 		Boolean deleteProduct = productService.deleteProduct(id);
 		if (deleteProduct) {
-			session.setAttribute("succMsg", "Product delete success");
+			session.setAttribute("succMsg", "Product deleted");
 		} else {
-			session.setAttribute("errorMsg", "Something wrong on server");
+			session.setAttribute("errorMsg", "Something went wrong");
 		}
 		return "redirect:/admin/products";
 	}
@@ -286,9 +279,9 @@ public class AdminController {
 		} else {
 			Product updateProduct = productService.updateProduct(product, image);
 			if (!ObjectUtils.isEmpty(updateProduct)) {
-				session.setAttribute("succMsg", "Product update success");
+				session.setAttribute("succMsg", "Product updated");
 			} else {
-				session.setAttribute("errorMsg", "Something wrong on server");
+				session.setAttribute("errorMsg", "Something went wrong");
 			}
 		}
 		return "redirect:/admin/editProduct/" + product.getId();
@@ -314,7 +307,7 @@ public class AdminController {
 		if (f) {
 			session.setAttribute("succMsg", "Account Status Updated");
 		} else {
-			session.setAttribute("errorMsg", "Something wrong on server");
+			session.setAttribute("errorMsg", "Something went wrong");
 		}
 		return "redirect:/admin/users?type=" + type;
 	}
@@ -322,9 +315,6 @@ public class AdminController {
 	@GetMapping("/orders")
 	public String getAllOrders(Model m, @RequestParam(name = "pageNo", defaultValue = "0") Integer pageNo,
 			@RequestParam(name = "pageSize", defaultValue = "10") Integer pageSize) {
-		// List<ProductOrder> allOrders = orderService.getAllOrders();
-		// m.addAttribute("orders", allOrders);
-		// m.addAttribute("srch", false);
 
 		Page<ProductOrder> page = orderService.getAllOrdersPagination(pageNo, pageSize);
 		m.addAttribute("orders", page.getContent());
@@ -363,7 +353,7 @@ public class AdminController {
 		if (!ObjectUtils.isEmpty(updateOrder)) {
 			session.setAttribute("succMsg", "Status Updated");
 		} else {
-			session.setAttribute("errorMsg", "status not updated");
+			session.setAttribute("errorMsg", "Something went wrong");
 		}
 		return "redirect:/admin/orders";
 	}
@@ -448,7 +438,7 @@ public class AdminController {
 		if (ObjectUtils.isEmpty(updateUserProfile)) {
 			session.setAttribute("errorMsg", "Profile not updated");
 		} else {
-			session.setAttribute("succMsg", "Profile Updated");
+			session.setAttribute("succMsg", "Profile updated");
 		}
 		return "redirect:/admin/profile";
 	}
@@ -467,7 +457,7 @@ public class AdminController {
 			if (ObjectUtils.isEmpty(updateUser)) {
 				session.setAttribute("errorMsg", "Password not updated !! Error in server");
 			} else {
-				session.setAttribute("succMsg", "Password Updated sucessfully");
+				session.setAttribute("succMsg", "Password updated sucessfully");
 			}
 		} else {
 			session.setAttribute("errorMsg", "Current Password incorrect");

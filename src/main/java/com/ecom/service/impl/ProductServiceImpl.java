@@ -75,9 +75,8 @@ public class ProductServiceImpl implements ProductService {
 		dbProduct.setIsActive(product.getIsActive());
 		dbProduct.setDiscount(product.getDiscount());
 
-		// 5=100*(5/100); 100-5=95
-		Double disocunt = product.getPrice() * (product.getDiscount() / 100.0);
-		Double discountPrice = product.getPrice() - disocunt;
+		Double discount = product.getPrice() * (product.getDiscount() / 100.0);
+		Double discountPrice = product.getPrice() - discount;
 		dbProduct.setDiscountPrice(discountPrice);
 
 		Product updateProduct = productRepository.save(dbProduct);
@@ -148,11 +147,6 @@ public class ProductServiceImpl implements ProductService {
 		pageProduct = productRepository.findByisActiveTrueAndTitleContainingIgnoreCaseOrCategoryContainingIgnoreCase(ch,
 				ch, pageable);
 
-//		if (ObjectUtils.isEmpty(category)) {
-//			pageProduct = productRepository.findByIsActiveTrue(pageable);
-//		} else {
-//			pageProduct = productRepository.findByCategory(pageable, category);
-//		}
 		return pageProduct;
 	}
 

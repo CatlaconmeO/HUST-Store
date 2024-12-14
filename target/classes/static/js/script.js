@@ -106,11 +106,9 @@ $orders.validate({
 		rules:{
 			firstName:{
 				required:true,
-				lettersonly:true
 			},
 			lastName:{
 				required:true,
-				lettersonly:true
 			}
 			,
 			email: {
@@ -123,30 +121,23 @@ $orders.validate({
 				space: true,
 				numericOnly: true,
 				minlength: 10,
-				maxlength: 12
+				maxlength: 10
 
 			},
 			address: {
 				required: true,
-				all: true
-
 			},
 
 			city: {
 				required: true,
-				space: true
-
 			},
 			state: {
 				required: true,
-
-
 			},
 			pincode: {
 				required: true,
 				space: true,
 				numericOnly: true
-
 			},
 			paymentType:{
 			required: true
@@ -154,50 +145,41 @@ $orders.validate({
 		},
 		messages:{
 			firstName:{
-				required:'first required',
-				lettersonly:'invalid name'
+				required:'Invalid',
 			},
 			lastName:{
-				required:'last name required',
-				lettersonly:'invalid name'
+				required:'Last name required',
 			},
 			email: {
-				required: 'email name must be required',
-				space: 'space not allowed',
+				required: 'Email required',
+				space: 'Space not allowed',
 				email: 'Invalid email'
 			},
 			mobileNo: {
-				required: 'mob no must be required',
+				required: 'Invalid mobile number',
 				space: 'space not allowed',
-				numericOnly: 'invalid mob no',
-				minlength: 'min 10 digit',
-				maxlength: 'max 12 digit'
+				numericOnly: 'Number only',
+				minlength: 'Min 10 digit',
+				maxlength: 'Max 10 digit'
 			}
 		   ,
 			address: {
-				required: 'address must be required',
-				all: 'invalid'
-
+				required: 'Address required',
 			},
 
 			city: {
-				required: 'city must be required',
-				space: 'space not allowed'
-
+				required: 'City required',
 			},
 			state: {
-				required: 'state must be required',
-				space: 'space not allowed'
-
+				required: 'State required',			
 			},
 			pincode: {
-				required: 'pincode must be required',
+				required: 'Pincode required',
 				space: 'space not allowed',
-				numericOnly: 'invalid pincode'
-
+				numericOnly: 'Number only'
 			},
 			paymentType:{
-			required: 'select payment type'
+			required: 'Please select payment type'
 			}
 		}	
 })
