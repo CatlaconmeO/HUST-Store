@@ -3,11 +3,11 @@
 	th:replace="~{base::layout(~{::section})}">
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Add Admin</title>
 </head>
 <body>
 
-	<section style="background-color: #FAF3E0;">
+	<section>
 
 		<div class="container mt-5 p-5">
 			<div class="row">
@@ -15,7 +15,7 @@
 				<div class="col-md-7 p-2 offset-md-2">
 					<div class="card shadow p-3 mb-5 bg-body-tertiary rounded">
 						<div class="card-header text-center">
-							<p class="fs-4 text-center fw-bold">Add Product</p>
+							<p class="fs-4 text-center fw-bold">Add Admin</p>
 							<th:block th:if="${session.succMsg}">
 								<p class="text-success fw-bold">[[${session.succMsg}]]</p>
 								<th:block th:text="${@commnServiceImpl.removeSessionMessage()}"></th:block>
@@ -47,7 +47,6 @@
 									<label class="form-label">Email</label> <input required
 										class="form-control" name="email" type="email">
 								</div>
-
 
 								<div class="row">
 									<div class="col">
@@ -95,14 +94,14 @@
 							</form>
 						</div>
 
-
 					</div>
 				</div>
 			</div>
 		</div>
 		<style>
-			.custom-btn {
-				background-color: #aa261b;
+			.custom-btn
+			{
+				background-color: #aa261b ;
 				color: white;
 			}
 		</style>
