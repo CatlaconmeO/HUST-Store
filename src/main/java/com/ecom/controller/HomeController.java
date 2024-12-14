@@ -163,7 +163,7 @@ public class HomeController {
 				}
 				session.setAttribute("succMsg", "Register successfully");
 			} else {
-				session.setAttribute("errorMsg", "something wrong on server");
+				session.setAttribute("errorMsg", "Something went wrong");
 			}
 		}
 
@@ -200,9 +200,9 @@ public class HomeController {
 			Boolean sendMail = commonUtil.sendMail(url, email);
 
 			if (sendMail) {
-				session.setAttribute("succMsg", "Please check your email..Password Reset link sent");
+				session.setAttribute("succMsg", "Password reset link sent. Please check your email!");
 			} else {
-				session.setAttribute("errorMsg", "Somethong wrong on server ! Email not send");
+				session.setAttribute("errorMsg", "Something went wrong on server!");
 			}
 		}
 
@@ -215,7 +215,7 @@ public class HomeController {
 		UserDtls userByToken = userService.getUserByToken(token);
 
 		if (userByToken == null) {
-			m.addAttribute("msg", "Your link is invalid or expired !!");
+			m.addAttribute("msg", "Your link is invalid or expired!!");
 			return "message";
 		}
 		m.addAttribute("token", token);
@@ -228,7 +228,7 @@ public class HomeController {
 
 		UserDtls userByToken = userService.getUserByToken(token);
 		if (userByToken == null) {
-			m.addAttribute("errorMsg", "Your link is invalid or expired !!");
+			m.addAttribute("errorMsg", "Your link is invalid or expired!!");
 			return "message";
 		} else {
 			userByToken.setPassword(passwordEncoder.encode(password));

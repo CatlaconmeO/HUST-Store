@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-	th:replace="~{base::layout(~{::section})}">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base :: layout(pageTitle='Admin Profile', content=~{::section})}">
+
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
 </head>
 <body>
-	<section>
+	<section style="background-color: #FAF3E0;">
 		<div class="container-fluid mt-5 p-5 bg-light">
 			<div class="row">
 				<div class="col-md-10 offset-md-1 ">

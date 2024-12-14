@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-	th:replace="~{base::layout(~{::section})}">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base :: layout(pageTitle='Product Details', content=~{::section})}">
+
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
@@ -11,9 +11,9 @@
  		 white-space: pre-line;
 }
 	</style>
-	<section>
-		<div class="container card-sh"
-			style="margin-top: 70px; margin-bottom: 100px">
+	<section >
+		<div class="container card-sh" style="background-color: #FAF3E0;
+			margin-top: 70px; margin-bottom: 100px">
 
 			<div class="col-md-12 p-5">
 				<div class="row">
@@ -56,10 +56,12 @@
 						</p>
 						<p class="fs-5 fw-bold">
 							Price: 
-							[[${product.discountPrice}]]&#8363 <span
-								class="fs-6 text-decoration-line-through text-secondary">[[${product.price}]]</span>
-							<span class="fs-6  text-success">[[${product.discount}]]%
-								off</span>
+							[[${product.discountPrice}]]&#8363 
+							<th:block th:if="${product.discount>0}">
+								<span class="fs-6 text-decoration-line-through text-secondary">[[${product.price}]]</span>
+								<span class="fs-6  text-success">[[${product.discount}]]% off</span>
+							</th:block>
+
 						</p>
 
 						<div class="row">

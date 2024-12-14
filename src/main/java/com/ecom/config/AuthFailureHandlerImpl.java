@@ -56,7 +56,7 @@ public class AuthFailureHandlerImpl extends SimpleUrlAuthenticationFailureHandle
 				}
 
 			} else {
-				exception = new LockedException("your account is inactive");
+				exception = new LockedException("Your account is inactive");
 			}
 		} else {
 			exception = new LockedException("Email & password invalid");

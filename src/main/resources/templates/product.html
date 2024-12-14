@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-    th:replace="~{base::layout(~{::section})}">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base :: layout(pageTitle='Products', content=~{::section})}">
+
 <head>
     <meta charset="ISO-8859-1">
     <title>Insert title here</title>
@@ -8,7 +8,7 @@
    
 <body>
 	
-    <section>
+    <section style="background-color: #FAF3E0;">
 		<div class="container-fluid bg p-4  mt-5 " style="background-color: #aa261b;">
 			<div class="row">
 				<div class="col-md-8 offset-md-2">
@@ -79,6 +79,9 @@
 															<span class="text-decoration-line-through text-secondary">[[${p.price}]]&#8363; </span>
 															<span class="fs-6 text-success">[[${p.discount}]]% off</span><br>
 														</th:block>
+														<th:block th:if="${p.discount == 0}">
+															<br>
+														</th:block>
 														<span>[[${p.discountPrice}]]&#8363; </span> 
                                                     </p>
 													<a th:href="@{'/product/'+${p.id}}"
@@ -107,10 +110,10 @@
 											</a>
 										</li>
 										<li th:if="${totalPages == 1}" class="page-item active">
-											<a class="page-link">1</a>
+											<a class="page-link" style="background-color: #aa261b;">1</a>
 										</li>
 										<li th:if="${totalPages > 1}" th:each="i : ${#numbers.sequence(1, totalPages)}" class="page-item" th:classappend="${pageNo + 1 == i} ? 'active' : ''">
-											<a class="page-link" th:href="@{'/products?pageNo=' + ${i - 1}}">[[${i}]]</a>
+											<a class="page-link" style="background-color: #aa261b;"  th:href="@{'/products?pageNo=' + ${i - 1}}">[[${i}]]</a>
 										</li>
 										<li class="page-item" th:classappend="${isLast} ? 'disabled' : ''">
 											<a class="page-link" th:href="@{'/products?pageNo=' + ${pageNo + 1}}" aria-label="Next">

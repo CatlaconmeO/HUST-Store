@@ -1,12 +1,18 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-	th:replace="~{base::layout(~{::section})}">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base :: layout(pageTitle='Order', content=~{::section})}">
+
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
 </head>
 <body>
+	<style>
+		.custom-btn{
+			background-color: #aa261b ;
+			color: white;
+		}
+	</style>
 	<section>
+
 
 		<div class="container mt-5 p-5">
 			<form action="/user/save-order" method="post" id="orders" novalidate>
@@ -72,24 +78,18 @@
 										<tr>
 											<td>Total price</td>
 											<td>:</td>
-											<td>&#8377; [[${orderPrice}]]</td>
+											<td>[[${orderPrice}]]&#8363; </td>
 										</tr>
 										<tr>
 											<td>Delivery Fee</td>
 											<td>:</td>
-											<td>&#8377; 250</td>
-										</tr>
-
-										<tr>
-											<td>Tax</td>
-											<td>:</td>
-											<td>&#8377; 100</td>
+											<td>25.000&#8363; </td>
 										</tr>
 
 										<tr class="border-top">
 											<td>Total Price</td>
 											<td>:</td>
-											<td>&#8377; [[${totalOrderPrice}]]</td>
+											<td>[[${totalOrderPrice}]]&#8363; </td>
 										</tr>
 									</tbody>
 								</table>
@@ -99,18 +99,17 @@
 						<div class="card shadow p-3 mb-5 mt-2 bg-body-tertiary rounded">
 
 							<div class="card-body">
-								<!-- <form action="/login" method="post"> -->
 								<div class="mb-3">
 									<label class="form-label">Select Payment Type</label> <select required
 										name="paymentType" class="form-control">
 										<option value="">--select--</option>
 										<option value="COD">Cash On Delivery</option>
-										<option value="ONLINE">Online Payment</option>
+										<option value="ONLINE">Online Payment(in progress)</option>
 									</select>
 
 								</div>
 
-								<button class="btn bg-primary text-white col-md-12">Place
+								<button class="btn bg-danger text-white col-md-12">Place
 									Order</button>
 
 							</div>
