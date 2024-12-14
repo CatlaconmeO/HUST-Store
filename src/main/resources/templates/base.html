@@ -70,6 +70,7 @@
       text-align: center;
       padding: 20px 0;
       color: white;
+
     }
 
     .footer p {
@@ -140,7 +141,49 @@
   <div th:replace="${content}"></div>
 
   <!-- Footer -->
+  <style>
+    .footer {
+    width: 100%;
+    background-image: url("/img/footer.png");
+    height: 195px;
+    margin: 0 ;
+    background-color: #aa261b;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+    .footer img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+    }
+
+
+    .footer .text {
+        padding-top: 15px;
+    }
+
+        .footer .text p {
+            font-size: 14px;
+            font-weight: bold;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.43;
+            letter-spacing: normal;
+            text-align: center;
+            color: #ffffff;
+            margin-bottom: 1px;
+        }
+
+            .footer .text p.normal {
+                font-weight: normal;
+                margin-top: 1px;
+            }
+
+  </style>
   <div class="footer">
+
     <p>© Bản quyền thuộc về Đại học Bách Khoa Hà Nội</p>
     <p class="normal">Địa chỉ: Số 1 Đại Cồ Việt, Hai Bà Trưng, Hà Nội</p>
   </div>

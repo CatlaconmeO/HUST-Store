@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base :: layout(pageTitle='Admin Profile', content=~{::section})}">
-
 <head>
 <meta charset="ISO-8859-1">
 </head>
 <body>
-	<section style="background-color: #FAF3E0;">
-		<div class="container-fluid mt-5 p-5 bg-light">
+	<section >
+		<div class="container-fluid mt-5 p-5 bg-light" >
 			<div class="row">
 				<div class="col-md-10 offset-md-1 ">
-
+					
 					<p class="fs-3 text-center">My Profile</p>
 					<th:block th:if="${session.succMsg}">
 						<p class="text-success fw-bold  text-center">[[${session.succMsg}]]</p>
@@ -94,12 +93,11 @@
 										type="hidden" th:value="${user.id}" name="id"></td>
 								</tr>
 
-								<tr>
-									<td></td>
-									<td class="text-center">
-										<button class="btn btn-sm bg-primary text-light">Update</button>
+								
+									<td class = " bg-light">
+										<button class="btn btn-primary" style="position:relative; left: 340px;">Update</button>
 									</td>
-								</tr>
+								
 								</form>
 							</tbody>
 						</table>
@@ -110,7 +108,7 @@
 				<hr>
 				<div class="col-md-10 offset-md-1 mt-1">
 					<div class="row">
-						<p class="text-center fs-3">Change Password</p>
+						<p class="text-center fs-3" >Change Password</p>
 						<div class="col-md-6 offset-md-3">
 							<table class="table table-borderless">
 
@@ -136,7 +134,7 @@
 										<tr>
 											<td></td>
 											<td class="text-center">
-												<button class="btn btn-sm bg-primary text-light col-md-4">Update</button>
+												<button class="btn btn-sm bg-primary text-light col-md-3" style="position : relative; left: -37%">Update</button>
 											</td>
 
 										</tr>

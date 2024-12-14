@@ -7,12 +7,13 @@
 </head>
 <body>
 	<section style="background-color: #FAF3E0;">
+		<br> <br>
 		<div class="container p-5 mt-3">
 			<div class="row">
 				<div class="col-md-8 offset-md-2">
 					<div class="card card-sh">
 						<div class="card-header text-center ">
-							<p class="fs-4">Edit Product</p>
+							<p class="fs-4 fw-bold">Edit Product</p>
 
 							<th:block th:if="${session.succMsg}">
 								<p class="text-success fw-bold">[[${session.succMsg}]]</p>
@@ -91,13 +92,13 @@
 
 									<div class="mb-3 col">
 										<label>Upload Image</label> <input type="file" name="file"
-											class="form-control">
+											class="form-control"> <br>
 									</div>
 
-									<div class="mt-1">
+									<!-- <div class="mt-1">
 										<img th:src="@{'/img/product_img/'+${product.image}}"
 											width="100px" height="100px">
-									</div>
+									</div> -->
 
 								</div>
 								<button class="btn custom-btn col-md-12">Update</button>
@@ -113,6 +114,7 @@
 				color: white;
 			}
 		</style>
+		<br> <br>
 	</section>
 </body>
 </html>
